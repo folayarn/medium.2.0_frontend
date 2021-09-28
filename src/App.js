@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container,Row,} from "react-bootstrap";
+import {Switch , Route} from "react-router-dom"
+import PageNotFound from "./components/PageNotFound"
+import PageIndex from './components/PageIndex'
 
 function App() {
+  const routes=(
+<Switch>
+<Route path="/index">
+<PageIndex/>
+</Route>
+<Route path="*">  
+<PageNotFound/>
+</Route>
+</Switch>
+  )
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      
+      <Row >
+        {routes}
+      </Row>
+      
+    </Container>
   );
 }
 
